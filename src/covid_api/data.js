@@ -25,7 +25,19 @@ export const fetchDailyData = async () => {
     try {
         const { data } = await axios.get(`https://api.covid19api.com/total/dayone/country/poland`);
 
-        return data.map(({ Active, Recovered, Deaths, reportDate: Date }) => ({ Active: Active.total, Deaths: Deaths.total, Date }));
+        const modifiedData = data.map((dailyData) =>({
+            active: dailyData.Active,
+            deaths: dailyData.Deaths,
+            date: new Date(dailyData.Date).toDateString(),
+        }));
+
+        //No data on 24th June 2020 for Poland
+        const index = modifiedData.findIndex(i => i.date === "Wed Jun 24 2020");
+        modifiedData.splice(index, 1);
+
+
+
+        return modifiedData;
     } catch (error) {
         return error;
     }

@@ -1,17 +1,22 @@
 import React from 'react';
 import './App.css';
 
+// import Chart from "./Chart/Chart";
 import Card from 'react-bootstrap/Card'
-import {fetchCurrentData} from "./covid_api/data";
+import {fetchCurrentData, fetchDailyData} from "./covid_api/data";
+import Chart from "./Chart/Chart";
 
 class App extends React.Component{
+
     state = {
         data: {},
     }
 
+
     async componentDidMount() {
         const fetchedData = await fetchCurrentData();
         this.setState({data: fetchedData});
+        fetchDailyData();
 
     }
 
@@ -57,6 +62,7 @@ class App extends React.Component{
                         </Card.Footer>
                     </Card>
                 </div>
+                <Chart></Chart>
             </div>
         )
     }
