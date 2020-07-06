@@ -5,25 +5,37 @@ import './App.css';
 import Card from 'react-bootstrap/Card'
 import {fetchCurrentData, fetchDailyData} from "./covid_api/data";
 import Chart from "./Chart/Chart";
+import DropDownList from "./DropDownList/DropDownList";
 
 class App extends React.Component{
 
     state = {
+        dailyData:[],
         data: {},
+        country: '',
     }
 
 
     async componentDidMount() {
-        const fetchedData = await fetchCurrentData();
+        const fetchedData = await fetchCurrentData("Poland");
         this.setState({data: fetchedData});
-        fetchDailyData();
-
+        const dailyData = await fetchDailyData("Poland");
+        this.setState({dailyData: dailyData});
+    }
+    handleCountryChange = async (country) => {
+        const fetchedData = await fetchCurrentData(country);
+        this.setState({data: fetchedData, country: country});
+        const dailyData = await fetchDailyData(country);
+        this.setState({dailyData: dailyData});
+        console.log(this.state.dailyData);
+        console.log(this.state.data);
     }
 
     render() {
         return(
             <div className="main_container">
                 <h1>Coronavirus Tracker</h1>
+                <DropDownList handleCountryChange = {this.handleCountryChange}></DropDownList>
                 <div id="cards_container">
                     <Card>
                         <Card.Img variant="top" src="https://www.globalrecharge.guru/wp-content/uploads/2020/03/coronavirus_3.jpg" className = "photo" />
@@ -62,7 +74,7 @@ class App extends React.Component{
                         </Card.Footer>
                     </Card>
                 </div>
-                <Chart></Chart>
+                <Chart data={this.state.dailyData} country={this.state.country}></Chart>
             </div>
         )
     }
