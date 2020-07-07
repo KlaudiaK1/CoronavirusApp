@@ -1,12 +1,16 @@
 body{
-  background: lightgray;
+  background: #606060;
 }
 
 .main_container{
   justify-content: center;
-  align-items: center;
 }
 
+
+h1{
+  text-align: center;
+  color: rgb(180, 180, 180);
+}
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -14,13 +18,13 @@ body{
   width: 40%;
   border-radius: 10px;
   margin: 20px;
-  background: rgb(230, 230, 230);
+  background: #2f2f2f;
   padding: 10px;
 
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.7);
 }
 
 .card_text{
@@ -29,7 +33,7 @@ body{
 
 #cards_container{
   display: flex;
-  margin: 30px;
+  margin: 20px 10px;
   height: 100%;
 }
 
@@ -38,4 +42,39 @@ body{
   height: 100px;
   object-fit: cover;
   border-radius: 10px 10px 0px 0px;
+}
+#chart{
+  width: 70%;
+  border-radius: 10px;
+  background: rgb(230, 230, 230);
+}
+.card_title{
+  color: rgb(180, 180, 180);
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.card_footer{
+  color: rgb(180, 180, 180);
+}
+#recovered{
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 5px;
+}
+#active{
+  color: orange;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 5px;
+}
+#deaths{
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 5px;
 }

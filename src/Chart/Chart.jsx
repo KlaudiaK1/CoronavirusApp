@@ -1,39 +1,25 @@
-import React, {useState, useEffect} from "react";
-import {fetchDailyData} from "../covid_api/data";
+import React from "react";
 import {Line} from 'react-chartjs-2';
 import styles from './Chart.module.css';
 const Chart = ({data, country}) =>{
-    const [dailyData, setDailyData] = useState([]);
-
-    useEffect(()=>{
-        const fetch = async () => {
-         setDailyData(await fetchDailyData());
-        }
-        fetch();
-        // const index = dailyData.findIndex(i => i.date === "Wed Jun 24 2020"); // Let's say it's Bob.
-        // delete dailyData[index];
-        }, []);
-        // console.log(dailyData);
-    console.log(data);
-    console.log(dailyData);
 
     return(
-        <div>
-            <Line data = {{
+        data[0] ? <div className={styles.container}>
+            <Line height={100} width={400} data = {{
                 labels: data.map(({date}) => date),
                 datasets: [{
                     data: data.map(({active}) => active),
                     label: 'Active',
-                    borderColor: '#000000',
+                    borderColor: 'orange',
                     fill: true,
                 },{
                     data: data.map(({deaths}) => deaths),
                     label: 'Deaths',
-                    borderColor: '#253052',
+                    borderColor: 'red',
                     fill: true,
                 }],
             }}/>
-        </div>
+        </div> : <h4>Cannot load the daily data...</h4>
 
     )
 }
