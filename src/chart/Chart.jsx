@@ -19,7 +19,7 @@ const Chart = ({data, country}) =>{
                     fill: true,
                 }],
             }}/>
-        </div> : <h4>Cannot load the daily data...</h4>
+        </div> : <h4 className = "message">Cannot load the daily data...</h4>
 
     )
 }
