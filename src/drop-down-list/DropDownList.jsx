@@ -16,14 +16,14 @@ const DropDownList = ({handleCountryChange}) => {
     }, []);
 
     return(
-        <div className={styles.container}>
+        fetchedCountries[0] ? <div className={styles.container}>
             <FormControl>
                 <NativeSelect defaultValue = "Poland" onChange={(e => handleCountryChange(e.target.value))}>
                     <option style={{background: '#606060'}} value="Poland">Poland</option>
                     {fetchedCountries.map((country, i) => <option style={{background: '#606060'}} key = {i} value={country}>{country}</option> )}
                 </NativeSelect>
             </FormControl>
-        </div>
+        </div> : <h4>Cannot load a list of countries. There is probably a problem with your Internet connection or there are some bugs in the api.</h4>
 
     )
 }

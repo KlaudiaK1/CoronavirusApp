@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card'
 import {fetchCurrentData, fetchDailyData} from "./covid-api/data";
 import Chart from "./chart/Chart";
 import DropDownList from "./drop-down-list/DropDownList";
-import { VectorMap } from "react-jvectormap"
 
 class App extends React.Component{
 
@@ -35,40 +34,6 @@ class App extends React.Component{
         return(
             (this.state.data !== undefined) ? <div className="main_container">
                 <h1>Coronavirus Tracker</h1>
-                <VectorMap
-                    map={"world_mill"}
-                    backgroundColor="transparent"
-                    zoomOnScroll={false}
-                    containerStyle={{
-                        width: "100%",
-                        height: "520px"
-                    }}
-
-                    containerClassName="map"
-                    regionStyle={{
-                        initial: {
-                            fill: "#e4e4e4",
-                            "fill-opacity": 0.9,
-                            stroke: "none",
-                            "stroke-width": 0,
-                            "stroke-opacity": 0
-                        },
-                        hover: {
-                            "fill-opacity": 0.8,
-                            cursor: "pointer"
-                        },
-                    }}
-                    regionsSelectable={true}
-                    series={{
-                        regions: [
-                            {
-
-                                scale: ["#146804", "#ff0000"],
-                                normalizeFunction: "polynomial"
-                            }
-                        ]
-                    }}
-                />
                 <div id="drop_down">
                     <DropDownList handleCountryChange = {this.handleCountryChange}></DropDownList>
                 </div>
