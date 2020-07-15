@@ -28,6 +28,13 @@
     "covid-tracker-e2e": {
       "tags": [],
       "implicitDependencies": ["covid-tracker"]
+    },
+    "covid-tracker-angular": {
+      "tags": []
+    },
+    "covid-tracker-angular-e2e": {
+      "tags": [],
+      "implicitDependencies": ["covid-tracker-angular"]
     }
   }
 }
