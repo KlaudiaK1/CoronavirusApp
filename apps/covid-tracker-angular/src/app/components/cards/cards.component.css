@@ -29,12 +29,12 @@
   border-radius: 10px 10px 0px 0px;
   align-self: center;
   margin: 0px;
-
 }
 .card_header{
   display: flex;
   justify-content: center;
 }
+
 .card_title {
   color: rgb(180, 180, 180);
   text-align: center;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../service/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'covid-app-cards',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  summary$:Observable<any>
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+
   }
 
 }
