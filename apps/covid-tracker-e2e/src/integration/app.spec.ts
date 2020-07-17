@@ -1,5 +1,5 @@
 describe('flow', () => {
-  it('should contain a drop down list, cards and chart after choosing other country', () => {
+  it('should contain a drop down list, covid-cards and chart after choosing other country', () => {
     cy.visit('/');
     cy.get('select').select('Austria');
 
@@ -41,12 +41,12 @@ describe('checking if a drop down list exists', () => {
   });
 });
 
-describe('checking if title and cards exist', () => {
+describe('checking if title and covid-cards exist', () => {
   const today = new Date();
   const prevDay = new Date();
   prevDay.setDate(today.getDate() - 1);
   const urlCurrentData = `https://api.covid19api.com/country/Poland?from=${prevDay.toISOString().substring(0, 10)}T00:00:00Z&to=${today.toISOString().substring(0, 10)}T00:00:00Z`;
-  it('should contain a title and cards when the data about current states is properly loaded', () => {
+  it('should contain a title and covid-cards when the data about current states is properly loaded', () => {
 
     cy.fixture('currentDataPoland').as('current');
     cy.server();

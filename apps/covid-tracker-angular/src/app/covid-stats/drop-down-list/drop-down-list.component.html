@@ -1,0 +1,6 @@
+<div id = "drop-down-list" *ngIf="countries as countries">
+  <select id = "select-style" #input (change) = 'updateValues(input.value)'>
+    <option value="Poland">Poland</option>
+    <option *ngFor='let opt of countries' value='{{opt}}'>{{opt}}</option>
+  </select>
+</div>

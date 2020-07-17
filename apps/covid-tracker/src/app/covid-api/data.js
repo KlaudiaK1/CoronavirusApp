@@ -39,9 +39,6 @@ export const fetchDailyData = async (country) => {
       date: new Date(dailyData.Date).toDateString(),
     }));
 
-    //No data on 24th June 2020 for Poland
-    // const index = modifiedData.findIndex(i => i.date === "Wed Jun 24 2020");
-    // modifiedData.splice(index, 1);
     return modifiedData;
   } catch (error) {
     return error;

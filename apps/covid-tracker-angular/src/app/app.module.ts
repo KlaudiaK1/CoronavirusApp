@@ -2,16 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { CardsComponent } from './components/cards/cards.component';
-import { MatCardModule } from '@angular/material/card';
-import { DropDownListComponent } from './components/drop-down-list/drop-down-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CovidStatsModule } from './covid-stats/covid-stats.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, CardsComponent, DropDownListComponent],
-  imports: [BrowserModule, MatCardModule , HttpClientModule],
+  declarations: [AppComponent ],
+  imports: [BrowserModule, HttpClientModule, CovidStatsModule,CoreModule],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule {}

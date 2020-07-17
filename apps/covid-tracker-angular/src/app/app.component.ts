@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './service/data.service';
+import { CovidDataService } from './core/services/covid-data.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,17 +10,10 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'covid-tracker-angular';
 
-  data$:Observable<string[]>
-  data: string[]
-
-  constructor(private dataService:DataService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.data$ = this.dataService.fetchCountries()
-    this.dataService.fetchCountries().subscribe(data=>{
-      this.data = data
-    })
   }
 
 }
