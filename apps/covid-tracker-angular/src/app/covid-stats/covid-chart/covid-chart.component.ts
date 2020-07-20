@@ -1,6 +1,6 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DailyDataObj } from '../../shared/interfaces/covid-api/daily-data.interfaces';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 @Component({
@@ -8,27 +8,59 @@ import { Color, Label } from 'ng2-charts';
   templateUrl: './covid-chart.component.html',
   styleUrls: ['./covid-chart.component.css']
 })
-export class CovidChartComponent{
-  @Input() dailyStats: DailyDataObj[] = []; //TODO+
+export class CovidChartComponent implements OnInit{
 
-  public lineChartData: ChartDataSets[] = [
-    { data: this.dailyStats.map(({ Active }) => Active), label: 'Active', borderColor: 'orange', fill: true, },
-    { data: this.dailyStats.map(({ Deaths }) => Deaths), label: 'Deaths', borderColor: 'red', fill: true, }
-  ];
-  public lineChartLabels: Label[] = [
-    this.dailyStats.map(({ Date }) => Date)
-  ];
-  public lineChartOptions: ChartOptions & { annotation: any } = {
-    annotation: undefined,
-    responsive: true
-  };
+  @Input()
+  set dailyStats(dailyStats:DailyDataObj[]){
+    const active =  dailyStats.map(({ Active }) => Active);
+    const deaths = dailyStats.map(({ Deaths }) => Deaths);
+    const date = dailyStats.map(({ Date }) => Date);
+    const formattedDate = date.map((d) => new Date(d).toDateString());
+    this.lineChartData=[
+      { data: active, label: 'Active', fill: true, },
+      { data: deaths, label: 'Deaths', fill: true, }
+    ]
+    this.lineChartLabels = formattedDate
+
+  }
+
+  public lineChartData: ChartDataSets[] = [];
+  public lineChartLabels: Label[] = [];
+
   public lineChartColors: Color[] = [
     {
-      backgroundColor: 'rgba(88,222,222,0.3)'
+      borderColor: 'orange',
+      pointBorderColor: 'orange',
+      pointHoverBackgroundColor: 'rgb(249, 166, 2)',
+      pointHoverBorderColor: 'black',
+    },
+    {
+      borderColor: 'red',
+      pointBorderColor: 'red',
+      pointHoverBackgroundColor: 'red',
+      pointHoverBorderColor: 'black',
     }
   ];
+  public LineChartOptions = {
+    scales: {
+      xAxes: [{
+        ticks: { fontColor: 'rgb(220, 220, 220)' },
+      }],
+      yAxes: [{
+        ticks: { fontColor: 'rgb(220, 220, 220)' },
+      }]
+    },
+    legend : {
+      labels : {
+        fontColor : 'rgb(220, 220, 220)',
+      }
+    }
+  };
   public lineChartLegend = true;
   public lineChartType = 'line';
   public lineChartPlugins = [];
+
+  ngOnInit(): void {
+  }
 
 }

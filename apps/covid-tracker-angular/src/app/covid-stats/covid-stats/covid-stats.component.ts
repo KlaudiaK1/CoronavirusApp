@@ -25,6 +25,7 @@ export class CovidStatsComponent implements OnInit {
     });
     this.dataService.fetchDailyData('Poland').subscribe(d=>{
       this.dailyData=d
+      console.log(this.dailyData)
     });
   }
   onSelect(country:string): void {

@@ -1,0 +1,13 @@
+#chart-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background: #2f2f2f;
+  padding: 20px;
+  margin: 30px;
+}
+#chart-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7);
+}
+
+

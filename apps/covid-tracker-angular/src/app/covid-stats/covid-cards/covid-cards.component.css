@@ -36,14 +36,14 @@
 }
 
 .card_title {
-  color: rgb(180, 180, 180);
+  color: rgb(220, 220, 220);
   text-align: center;
   font-weight: bold;
   font-size: 20px;
   margin: 10px;
 }
 .card_footer {
-  color: rgb(180, 180, 180);
+  color: rgb(220, 220, 220);
   margin: 5px 5px;
 }
 #recovered {
