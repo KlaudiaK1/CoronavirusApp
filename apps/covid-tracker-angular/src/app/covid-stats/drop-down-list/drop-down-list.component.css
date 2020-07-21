@@ -1,7 +1,21 @@
 #drop-down-list {
   display: flex;
   justify-content: center;
-  padding: 10px;
-  margin: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+
+select option {
+  margin: 40px;
+  background: #2f2f2f;
+  color: #fff;
+  color: rgb(220, 220, 220);
+}
+
+select {
+  font-size: 20px;
+  background: #2f2f2f;
+  color: #fff;
+  color: rgb(220, 220, 220);
 }
 

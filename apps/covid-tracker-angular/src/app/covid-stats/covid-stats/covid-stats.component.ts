@@ -2,6 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { CovidDataService } from '../../core/services/covid-data.service';
 import { CurrentDataObj } from '../../shared/interfaces/covid-api/current-data.interfaces';
 import { DailyDataObj } from '../../shared/interfaces/covid-api/daily-data.interfaces';
+import { GlobalDataObj } from '../../shared/interfaces/covid-api/global-data.interfaces';
 
 @Component({
   selector: 'covid-app-covid-stats',
@@ -25,7 +26,6 @@ export class CovidStatsComponent implements OnInit {
     });
     this.dataService.fetchDailyData('Poland').subscribe(d=>{
       this.dailyData=d
-      console.log(this.dailyData)
     });
   }
   onSelect(country:string): void {

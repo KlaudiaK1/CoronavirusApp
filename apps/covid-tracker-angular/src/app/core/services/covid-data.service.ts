@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { CountriesData } from '../../shared/interfaces/covid-api/countries-data.interfaces';
 import { CurrentDataObj } from '../../shared/interfaces/covid-api/current-data.interfaces';
 import { DailyDataObj } from '../../shared/interfaces/covid-api/daily-data.interfaces';
+import { GlobalDataObj } from '../../shared/interfaces/covid-api/global-data.interfaces';
+import Global = WebAssembly.Global;
 
 
 @Injectable({
@@ -20,7 +22,14 @@ export class CovidDataService {
     return this.http.get<CountriesData>(url).pipe(map(({ Countries }) => Countries.map(({ Country }) => Country)));
   }
 
+  fetchGlobalData(): Observable<GlobalDataObj> {
+    const url = 'https://api.covid19api.com/world/total';
+    // this.http.get<GlobalDataObj>(url).pipe(map(({Global} ) => Global)).subscribe(x => console.log(x));
+    return this.http.get<GlobalDataObj>(url);
+  }
+
   fetchCurrentData(country): Observable<CurrentDataObj> {
+    // this.fetchGlobalData();
     const today = new Date();
     const prevDay = new Date();
     prevDay.setDate(today.getDate() - 1);

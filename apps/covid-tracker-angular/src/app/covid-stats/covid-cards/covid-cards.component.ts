@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CurrentDataObj } from '../../shared/interfaces/covid-api/current-data.interfaces';
+import { GlobalDataObj } from '../../shared/interfaces/covid-api/global-data.interfaces';
 
 @Component({
   selector: 'covid-app-covid-cards',
@@ -8,7 +9,6 @@ import { CurrentDataObj } from '../../shared/interfaces/covid-api/current-data.i
 })
 export class CovidCardsComponent {
 
-  @Input() currentStats:CurrentDataObj
-
+  @Input() currentStats:CurrentDataObj;
 
 }

@@ -6,17 +6,19 @@ import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '../shared/shared.module';
 import { CovidChartComponent } from './covid-chart/covid-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { GlobalCovidStatsComponent } from './global-covid-stats/global-covid-stats.component';
+import { CovidStatsRoutingModule } from './covid-stats-routing.module';
 
 
 @NgModule({
-  declarations: [CovidStatsComponent, CovidCardsComponent, DropDownListComponent, CovidChartComponent],
+  declarations: [CovidStatsComponent, CovidCardsComponent, DropDownListComponent, CovidChartComponent, GlobalCovidStatsComponent],
   exports: [
     CovidStatsComponent
   ],
   imports: [
     SharedModule,
     MatCardModule,
-    ChartsModule,
+    ChartsModule,CovidStatsRoutingModule
   ]
 })
 export class CovidStatsModule {
