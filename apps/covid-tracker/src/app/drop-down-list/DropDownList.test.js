@@ -30,8 +30,8 @@ describe('DropDownList', () => {
       <DropDownList handleCountryChange={handleCountryChange} />
     );
 
-    const poland = await findByLabelText(/select/);
-    fireEvent.change(poland, { target: { value: mockCountry } });
+    const australia = await findByLabelText(/select/);
+    fireEvent.change(australia, { target: { value: mockCountry } });
 
     expect(handleCountryChange).toBeCalledWith(mockCountry);
   });

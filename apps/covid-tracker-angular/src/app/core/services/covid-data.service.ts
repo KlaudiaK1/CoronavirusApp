@@ -6,8 +6,6 @@ import { CountriesData } from '../../shared/interfaces/covid-api/countries-data.
 import { CurrentDataObj } from '../../shared/interfaces/covid-api/current-data.interfaces';
 import { DailyDataObj } from '../../shared/interfaces/covid-api/daily-data.interfaces';
 import { GlobalDataObj } from '../../shared/interfaces/covid-api/global-data.interfaces';
-import Global = WebAssembly.Global;
-
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +22,20 @@ export class CovidDataService {
 
   fetchGlobalData(): Observable<GlobalDataObj> {
     const url = 'https://api.covid19api.com/world/total';
-    // this.http.get<GlobalDataObj>(url).pipe(map(({Global} ) => Global)).subscribe(x => console.log(x));
     return this.http.get<GlobalDataObj>(url);
   }
 
+  fetchDailyData(country): Observable<DailyDataObj[]> {
+    const url = `https://api.covid19api.com/total/dayone/country/${country}`;
+    return this.http.get<DailyDataObj[]>(url).pipe(map((data) => (data.map(({ Country, Active, Deaths, Date }) => ({
+      Country,
+      Active,
+      Deaths,
+      Date
+    })))));
+  }
+
   fetchCurrentData(country): Observable<CurrentDataObj> {
-    // this.fetchGlobalData();
     const today = new Date();
     const prevDay = new Date();
     prevDay.setDate(today.getDate() - 1);
@@ -46,15 +52,5 @@ export class CovidDataService {
       Recovered,
       Deaths
     }]) => ({ Country, Active, Recovered, Deaths })));
-  }
-
-  fetchDailyData(country): Observable<DailyDataObj[]> {
-    const url = `https://api.covid19api.com/total/dayone/country/${country}`;
-    return this.http.get<DailyDataObj[]>(url).pipe(map((data) => (data.map(({ Country, Active, Deaths, Date }) => ({
-      Country,
-      Active,
-      Deaths,
-      Date
-    })))));
   }
 }

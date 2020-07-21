@@ -10,15 +10,12 @@ import { GlobalDataObj } from '../../shared/interfaces/covid-api/global-data.int
 export class GlobalCovidStatsComponent implements OnInit {
   globalData: GlobalDataObj;
 
-
-  constructor(private dataService:CovidDataService) {
-
+  constructor(private dataService: CovidDataService) {
   }
 
   ngOnInit(): void {
-    this.dataService.fetchGlobalData().subscribe(d=>{
-      this.globalData=d
+    this.dataService.fetchGlobalData().subscribe(d => {
+      this.globalData = d;
     });
   }
-
 }

@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CovidDataService } from '../../core/services/covid-data.service';
 
 @Component({
   selector: 'covid-app-drop-down-list',
